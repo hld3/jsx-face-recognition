@@ -1,0 +1,7 @@
+.navigation p {
+  padding-left: 10px;
+}
+
+.navigation p:hover {
+  cursor: pointer;
+}

@@ -11,6 +11,7 @@ export default function App() {
   const [faceUrl, setFaceUrl] = useState('')
 
   async function onSubmitImageLink() {
+    setFaceUrl(input)
     const response = await fetch('http://localhost:3000/image_data', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
@@ -28,7 +29,7 @@ export default function App() {
       <div className='container'>
         {page === 'signin' && <SignIn setPage={setPage} />}
         {page === 'register' && <Register setPage={setPage} />}
-        {page === 'home' && <Home faceUrl={faceUrl} setFaceUrl={setFaceUrl} />}
+        {page === 'home' && <Home faceUrl={faceUrl} setInput={setInput} onSubmitImageLink={onSubmitImageLink} />}
       </div>
     </>
   )

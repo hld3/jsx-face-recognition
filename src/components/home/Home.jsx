@@ -1,15 +1,16 @@
-import ImageContainer from './ImageContainer'
-import ImageLinkForm from './ImageLinkForm'
-import Rank from './Rank'
+import ImageContainer from './ImageContainer';
+import ImageLinkForm from './ImageLinkForm';
+import Rank from './Rank';
 
-export default function home({ faceUrl, setInput, onSubmitImageLink }) {
+// prettier-ignore
+export default function home({ faceUrl, setInput, onSubmitImageLink, box }) {
 
     return(
         <>
             <Rank />
-            <p className='description' style={{ 'font-size': '1.5rem' }}>This magic brain will detect faces in your pictures. Give it a try.</p>
+            <p className='description' style={{ 'fontSize': '1.5rem' }}>This magic brain will detect faces in your pictures. Give it a try.</p>
             <ImageLinkForm setInput={setInput} onSubmitImageLink={onSubmitImageLink} />
-            <ImageContainer faceUrl={faceUrl} />
+            <ImageContainer faceUrl={faceUrl} box={box} />
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { calculateFaceLocation, retrieveImageData } from './Clarifai';
+import { calculateFaceLocation } from './Clarifai';
 import Home from './components/home/Home';
 import Navigation from './components/navigation/Navigation';
 import Register from './components/register/Register';
@@ -14,15 +14,13 @@ export default function App() {
 
   async function onSubmitImageLink() {
     setFaceUrl(input);
-    const data = await retrieveImageData(input);
-    setBox(await calculateFaceLocation(data));
-    // const response = await fetch('http://localhost:3000/image_data', { //! I will use this after I finish the steps of setting up everything again
-    //   method: 'POST',
-    //   headers: { 'Content-type': 'application/json' },
-    //   body: JSON.stringify({ input: input }),
-    // });
-    // const result = await response.json();
-    // console.log(result);
+    const response = await fetch('http://localhost:3000/image_data', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ input: input }),
+    });
+    const result = await response.json();
+    setBox(calculateFaceLocation(result));
   }
 
   return (

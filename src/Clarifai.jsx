@@ -1,3 +1,4 @@
+//! @deprecated
 export async function retrieveImageData(faceUrl) {
   const raw = JSON.stringify({
     user_app_id: {
@@ -40,7 +41,7 @@ export async function retrieveImageData(faceUrl) {
   }
 }
 
-export async function calculateFaceLocation(data) {
+export function calculateFaceLocation(data) {
   const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
   const image = document.getElementById('inputImage');
   const imageWidth = Number(image.width);

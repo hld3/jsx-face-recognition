@@ -1,7 +1,11 @@
+import { useContext } from 'react';
+import { InitialContext } from '../../context/InitialState';
 import './ImageContainer.css';
 
-// prettier-ignore
-export default function imageContainer({ faceUrl, box }) {
+export default function ImageContainer() {
+  const { faceUrl, box } = useContext(InitialContext);
+
+  // prettier-ignore
   return (
     <div className="image-container">
       <div style={{'position': 'absolute'}}>

@@ -1,13 +1,16 @@
+import { useContext } from 'react';
+import { InitialContext } from '../../context/InitialState';
 import './Navigation.css';
 
-// prettier-ignore
-export default function navigation({ page, setPage, setInput }) {       
-    
-    return (
+export default function Navigation({ page, setPage }) {
+  const { resetState, setInput } = useContext(InitialContext);
+
+  // prettier-ignore
+  return (
         <>
             {page === 'register' && <p onClick={() => setPage('signin')}>Sign In</p>}
             {page === 'signin' && <p onClick={() => setPage('register')}>Register</p>}
-            {page === 'home' && <p onClick={() => { setPage('signin'); setInput('') }}>Sign Out</p>}
+            {page === 'home' && <p onClick={() => { setPage('signin'); setInput(''); resetState() }}>Sign Out</p>}
         </>
     )
 }

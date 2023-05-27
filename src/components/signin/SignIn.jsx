@@ -1,14 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useContext } from 'react';
 import { db } from '../../App';
 import { InitialContext } from '../../context/InitialState';
 import '../box.css';
 
-export default function SignIn({
-  setPage,
-  // setUserEmail,
-  // setPassword,
-  // onLogin,
-}) {
+export default function SignIn({ setPage }) {
   const { setUser, password, setPassword, userEmail, setUserEmail } =
     useContext(InitialContext);
 

@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react';
-import { db } from '../../App';
 import { InitialContext } from '../../context/InitialState';
 import '../box.css';
 
@@ -8,16 +7,23 @@ export default function SignIn({ setPage }) {
   const { setUser, password, setPassword, userEmail, setUserEmail } =
     useContext(InitialContext);
 
-  function onLogin() {
-    const activeUser = db.find((user) => {
-      return user.email === userEmail && user.password === password;
-    });
+  async function onLogin() {
+    try {
+      const response = await fetch('http://localhost:3000/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail, password: password }),
+      });
+      const activeUser = await response.json();
 
-    if (activeUser) {
-      setUser(activeUser);
-      setPage('home');
-    } else {
-      console.log('There was an error logging in.');
+      if (activeUser.id) {
+        setUser(activeUser);
+        setPage('home');
+      } else {
+        console.log('Was unable to retrieve the expected user.');
+      }
+    } catch (error) {
+      console.log('There was an error logging in.', error);
     }
   }
 

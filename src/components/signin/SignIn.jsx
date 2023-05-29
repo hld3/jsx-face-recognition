@@ -27,6 +27,12 @@ export default function SignIn({ setPage }) {
     }
   }
 
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      onLogin();
+    }
+  }
+
   return (
     <article className='article'>
       <fieldset id='fieldset'>
@@ -42,6 +48,7 @@ export default function SignIn({ setPage }) {
           type='password'
           id='password'
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={(e) => handleKeyPress(e)}
         />
       </fieldset>
       <button onClick={() => onLogin()}>Sign In</button>

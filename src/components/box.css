@@ -24,3 +24,7 @@
 #email, #name, #password {
     margin-bottom: 10px;
 }
+
+.article p:hover {
+    cursor: pointer;
+}

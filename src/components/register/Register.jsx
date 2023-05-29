@@ -24,6 +24,12 @@ export default function Register({ setPage }) {
     }
   }
 
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      registerNewUser();
+    }
+  }
+
   return (
     <article className='article'>
       <fieldset id='fieldset'>
@@ -45,6 +51,7 @@ export default function Register({ setPage }) {
           type='password'
           id='password'
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={(e) => handleKeyPress(e)}
         />
       </fieldset>
       <button onClick={registerNewUser}>Sign Up</button>

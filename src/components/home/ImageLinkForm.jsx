@@ -11,11 +11,14 @@ export default function ImageLinkForm() {
     let result;
 
     try {
-      const response = await fetch('http://localhost:3000/image_data', {
-        method: 'POST',
-        headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify({ input: input }),
-      });
+      const response = await fetch(
+        'https://js-smart-brain-api.onrender.com/image_data',
+        {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({ input: input }),
+        }
+      );
       result = await response.json();
     } catch (error) {
       console.log('There was an error retrieving image data.', error);
@@ -29,11 +32,14 @@ export default function ImageLinkForm() {
 
   async function incrementImageCount() {
     try {
-      const incCountResponse = await fetch('http://localhost:3000/image', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: user.id }),
-      });
+      const incCountResponse = await fetch(
+        'https://js-smart-brain-api.onrender.com/image',
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: user.id }),
+        }
+      );
       const newCount = await incCountResponse.json();
       setUser(Object.assign(user, { entries: newCount }));
     } catch (error) {

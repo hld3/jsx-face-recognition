@@ -11,11 +11,18 @@ export default function Register({ setPage }) {
 
   async function registerNewUser() {
     try {
-      const response = await fetch('http://localhost:3000/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, email: email, password: password }),
-      });
+      const response = await fetch(
+        'https://js-smart-brain-api.onrender.com/register',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password,
+          }),
+        }
+      );
       const newUser = await response.json();
       setUser(newUser);
       setPage('home');

@@ -9,11 +9,14 @@ export default function SignIn({ setPage }) {
 
   async function onLogin() {
     try {
-      const response = await fetch('http://localhost:3000/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: userEmail, password: password }),
-      });
+      const response = await fetch(
+        'https://js-smart-brain-api.onrender.com/signin',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: userEmail, password: password }),
+        }
+      );
       const activeUser = await response.json();
 
       if (activeUser.id) {
